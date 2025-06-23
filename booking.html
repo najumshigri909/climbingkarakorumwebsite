@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Chilinji Pass Trek - Professional guided climb to the  the Karakoram range with Climbing Karakorum">
+  <title>Booking Form - Climbing Karakorum</title>
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* Shared Form Styles */
+    .contact-form-container,
+    .booking-form-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .contact-form,
+    .booking-form {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .form-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1a56a7;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .form-subtitle {
+      color: #666;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Special styling for date inputs */
+    .form-group input[type="date"],
+    .form-group input[type="number"] {
+      height: 46px;
+      /* Match other input heights */
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: #1a56a7;
+      outline: none;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .required {
+      color: #e74c3c;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background: #1a56a7;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .btn-submit:hover {
+      background: #15417e;
+    }
+
+    /* Message Styles */
+    .form-message {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 4px;
+      text-align: center;
+      display: none;
+      font-size: 16px;
+    }
+
+    .form-message.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .form-message.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    /* Contact Info Box */
+    .contact-info-box {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 25px;
+      margin-top: 30px;
+      border-left: 4px solid #1a56a7;
+    }
+
+    .contact-info-box h3 {
+      color: #1a56a7;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .contact-info-item i {
+      color: #1a56a7;
+      font-size: 18px;
+      margin-right: 15px;
+      margin-top: 3px;
+    }
+
+    .contact-info-item p {
+      margin: 0;
+      color: #555;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .contact-form,
+      .booking-form {
+        padding: 20px;
+      }
+
+      .form-title {
+        font-size: 24px;
+      }
+
+      .btn-submit {
+        padding: 12px;
+        font-size: 16px;
+      }
+    }
+
+    /* Animation for loading state */
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .fa-spinner {
+      animation: spin 1s linear infinite;
+      margin-right: 8px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <!-- Top Contact Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="contact-info">
+        <span><i class="fab fa-whatsapp"></i> +92 3345010552</span>
+        <span><i class="fas fa-envelope"></i> Info@climbingkarakorum.com</span>
+      </div>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/1EENM7MeMb/" aria-label="Facebook" target="_blank"><i
+            class="fab fa-facebook-f"></i></a>
+        <a href="https://www.tiktok.com/@climbing.karakorum?is_from_webapp=1&sender_device=pc" aria-label="Twitter"
+          target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/climbing_karakorum?igsh=OGcwYXM4czh1ZHRu" aria-label="Instagram"
+          target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/climbing-karakorum-ck-%F0%9F%87%B5%F0%9F%87%B0-184051361/"
+          aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.youtube.com/@climbingkarakorum_CK" aria-label="LinkedIn" target="_blank"><i
+            class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="main-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="images/logo/Climbing_Karakorum_logo-02-removebg-preview.png" alt="Climbing Karakorum Logo" width="120"
+          height="120">
+        <span class="logo-text">Climbing Karakorum</span>
+      </a>
+
+      <div class="nav-container">
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+
+            <li class="dropdown">
+              <button class="dropdown-btn" aria-expanded="false" aria-haspopup="true">
+                Expeditions <i class="fas fa-chevron-down dropdown-icon"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li class="submenu">
+                  <button class="submenu-btn">6000M Peaks <i class="fas fa-chevron-right"></i></button>
+                  <ul class="submenu-list">
+                    <li><a href="bonditpeak.html">Bondit Peak Expeditions</a></li>
+                    <li><a href="Drifikapeak.html">Drifika Peak Expeditions</a></li>
+                    <li><a href="gondogoro-peak.html">Gandogoro Peak Expeditions</a></li>
+                    <li><a href="lailapeak.html">Laila Peak Expeditions</a></li>
+                    <li><a href="pajupeak.html">Paju Peak Expeditions</a></li>
+                  </ul>
+                </li>
+                <li class="submenu">
+                  <button class="submenu-btn">7000M Peaks <i class="fas fa-chevron-right"></i></button>
+                  <ul class="submenu-list">
+                    <li><a href="rakaposhipeak.html">Rakaposhi Expeditions</a></li>
+                    <li><a href="masherbrumpeak.html">Masherbrum Expeditions</a></li>
+                    <li><a href="spantikpeak.html">Spantik Expeditions</a></li>
+                    <li><a href="diranpeak.html">Diran Peak Expeditions</a></li>
+                    <li><a href="gasherbrum4peak.html">Gasherbrum 4 Expeditions</a></li>
+                    <li><a href="gasherbrum6peak.html">Gasherbrum 6 Expeditions</a></li>
+                    <li><a href="passupeak.html">Passu Sar Expeditions</a></li>
+                    <li><a href="ultrapeak.html">Ultra Sar Expeditions</a></li>
+                  </ul>
+                </li>
+                <li class="submenu">
+                  <button class="submenu-btn">8000M Peaks <i class="fas fa-chevron-right"></i></button>
+                  <ul class="submenu-list">
+                    <li><a href="K2peak.html">K2 Expeditions</a></li>
+                    <li><a href="Broadpeak.html">Broad Peak Expeditions</a></li>
+                    <li><a href="Gasherbrum1peak.html">Gasherbrum I Expeditions</a></li>
+                    <li><a href="Gasherbrum2peak.html">Gasherbrum 2 Expeditions</a></li>
+                    <li><a href="Nangaparbatpeak.html">Nanga Parbat Expeditions</a></li>
+                  </ul>
+                </li>
+                <li class="submenu">
+                  <button class="submenu-btn">Rock Climbing <i class="fas fa-chevron-right"></i></button>
+                  <ul class="submenu-list">
+                    <li><a href="Trangotowerpeak.html">Trango Tower Expeditions</a></li>
+                    <li><a href="Nangmavalleypeak.html">Nangma Valley Expeditions</a></li>
+                    <li><a href="Latokogrepeak.html">Latok Ogre Expeditions</a></li>
+                    <li><a href="Shiptonspairpeak.html">Shipton Spair Expeditions</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <button class="dropdown-btn" aria-expanded="false" aria-haspopup="true">
+                Trekking <i class="fas fa-chevron-down"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li class="submenu">
+                  <button class="submenu-btn">Karakoram Range <i class="fas fa-chevron-right"></i></button>
+                  <ul class="submenu-list">
+                    <li><a href="k2bctrek.html">K2 B.C & Gandogoro La Trek</a></li>
+                    <li><a href="k2gandogorolatrek.html">K2 Gandogoro La Trek</a></li>
+                    <li><a href="biafolaketrek.html">Biafo & Snow Lake Trek</a></li>
+                    <li><a href="Charakusatrek.html">Charakusa valley Trek</a></li>
+                    <li><a href="Iqbaltoptrek.html">Iqbal Top Trek</a></li>
+                    <li><a href="Nangmatrek.html">Nangma Valley Trek</a></li>
+                    <li><a href="Masherbrumbasetrek.html">Masherbrum Base Camp Trek</a></li>
+                    <li><a href="Fivebasetrek.html">Five Base Camp Trek</a></li>
+                    <li><a href="Pastorebasetrek.html">Pastore Base Camp Trek</a></li>
+                  </ul>
+                </li>
+                <li class="submenu">
+                  <button class="submenu-btn">Himalayan Range <i class="fas fa-chevron-right"></i></button>
+                  <ul class="submenu-list">
+                    <li><a href="Nangaparbattrek.html">Nanga Parbat Diamir Face Trek</a></li>
+                    <li><a href="aroundnangatrek.html">Around Nanga Parbat Trek</a></li>
+                    <li><a href="Nangaraikotfacetrek.html">Nanga Parbat Raikot Face Trek</a></li>
+                    <li><a href="nangarupalfacetrek.html">Nanga Parbat Rupal Face Trek</a></li>
+                  </ul>
+                </li>
+                <li class="submenu">
+                  <button class="submenu-btn">Hindush Range <i class="fas fa-chevron-right"></i></button>
+                  <ul class="submenu-list">
+                    <li><a href="nalterishkomantrek.html">Nalter Ishkoman Trek</a></li>
+                    <li><a href="trichmirbasetrek.html">Trich Mir Base Camp Trek</a></li>
+                    <li><a href="chilinajipasstrek.html">Chilinji Pass Trek</a></li>
+                    <li><a href="Darkotpasstrek.html">Darkot Pass Trek</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <button class="dropdown-btn" aria-expanded="false" aria-haspopup="true">
+                Tours <i class="fas fa-chevron-down"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li class="submenu">
+                  <button class="submenu-btn">Autumn Session <i class="fas fa-chevron-right"></i></button>
+                  <ul class="submenu-list">
+                    <li><a href="gbautumntour.html">Gilgit Baltistan Autumn Tour</a></li>
+                    <li><a href="gbculturetour.html">Gilgit-Baltistan Culture Tour</a></li>
+                    <li><a href="hunzaautumntour.html">Hunza Autumn Tour</a></li>
+                    <li><a href="phandartautumntour.html">Phandar Autumn Tour</a></li>
+                  </ul>
+                </li>
+                <li class="submenu">
+                  <button class="submenu-btn">Spring Session <i class="fas fa-chevron-right"></i></button>
+                  <ul class="submenu-list">
+                    <li><a href="springhunzavalleytour.html">Spring Session Hunza Valley Blossom</a>
+                    </li>
+                    <li><a href="tourskarduvalley.html">Tour Skardu Valley Blossom Tour</a></li>
+                    <li><a href="khapluvalleytour.html">Khaplu Valley Blossom Tour</a></li>
+                    <li><a href="astorevalleytour.html">Astore Valley Blossom Tour
+                      </a></li>
+                  </ul>
+                </li>
+                <li class="submenu">
+                  <button class="submenu-btn">Summer Season <i class="fas fa-chevron-right"></i></button>
+                  <ul class="submenu-list">
+                    <li><a href="deoseiplateautour.html">Deosei Plateau Tour</a></li>
+                    <li><a href="fairymeadowtour.html">Fairy Meadow Tour</a></li>
+                    <li><a href="khunjerabpasstour.html">Khunjerab Pass Tour</a></li>
+                    <li><a href="shandurpolotour.html">Shandur Polo Tour</a></li>
+                  </ul>
+                </li>
+                <li class="submenu">
+                  <button class="submenu-btn">Winter Season <i class="fas fa-chevron-right"></i></button>
+                  <ul class="submenu-list">
+                    <li><a href="astoremarkhorhuntingtour.html">Astore Markhor Hunting</a></li>
+                    <li><a href="himalayanibexhuntingtour.html">Himalayan Ibex Hunting</a></li>
+                    <li><a href="punjaburailhunting.html">Punjab Urial Hunting</a></li>
+                    <li><a href="sindthibexhuntingtour.html">Sindth Ibex Hunting</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <button class="dropdown-btn" aria-expanded="false" aria-haspopup="true">
+                Travel Info <i class="fas fa-chevron-down"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="mountaineering-rules.html" class="nav-link">Mountaineering Rules</a></li>
+                <li><a href="pakistan-mountains-list.html" class="nav-link">Mountains List in
+                    Pakistan</a></li>
+                <li><a href="peak-royalty-fees.html" class="nav-link">Peak Royalty in Pakistan</a></li>
+                <li><a href="terms-conditions.html" class="nav-link">Terms and Conditions</a></li>
+                <li><a href="aboutus.html" class="nav-link">About Our Company</a></li>
+              </ul>
+            </li>
+
+
+            <!-- <li><a href="aboutus.html" class="nav-link">About Us</a></li> -->
+            <li><a href="contactus.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <a href="booking.html" class="btn btn-primary book-now-btn">Book Now <i class="fas fa-arrow-right"></i></a>
+
+    </div>
+  </header>
+
+  <div class="booking-form-container">
+    <div class="booking-form">
+      <h2 class="form-title">Book Your Adventure</h2>
+      <p class="form-subtitle">Fill out the form below to reserve your spot</p>
+
+      <form id="bookingForm" action="https://formsubmit.co/climbingkarakorum@gmail.com" method="POST">
+        <!-- FormSubmit Configuration -->
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_subject" value="New Booking Request">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="booking_name">Full Name <span class="required">*</span></label>
+            <input type="text" id="booking_name" name="name" placeholder="E.g. John Smith" required>
+          </div>
+
+          <div class="form-group">
+            <label for="booking_email">Email Address <span class="required">*</span></label>
+            <input type="email" id="booking_email" name="email" placeholder="E.g. john@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="booking_phone">Phone Number <span class="required">*</span></label>
+            <input type="tel" id="booking_phone" name="phone" placeholder="E.g. +92 332 5499737" required>
+          </div>
+
+          <div class="form-group">
+            <label for="booking_date">Preferred Date <span class="required">*</span></label>
+            <input type="date" id="booking_date" name="date" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="destination">Destination/Expedition <span class="required">*</span></label>
+            <input type="text" id="destination" name="destination" placeholder="E.g. K2 Base Camp Trek" required>
+          </div>
+
+          <div class="form-group">
+            <label for="booking_participants">Number of Participants <span class="required">*</span></label>
+            <input type="number" id="booking_participants" name="participants" min="1" value="1" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="booking_notes">Special Requirements</label>
+          <textarea id="booking_notes" name="notes"
+            placeholder="Dietary restrictions, special requests, etc."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Book Now <i class="fas fa-calendar-check"></i></button>
+
+        <!-- Message container -->
+        <div id="bookingMessage" class="form-message" style="display: none;"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <img src="images/logo/Climbing_Karakorum_logo-02-removebg-preview.png" alt="Climbing Karakoram"
+            class="footer-logo">
+          <p>Providing unforgettable mountain experiences since 2005. Our expert guides will take you safely
+            to the most
+            spectacular locations in the Karakoram, Himalaya, and Hindu Kush ranges.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/share/1EENM7MeMb/" aria-label="Facebook" target="_blank"><i
+                class="fab fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com/@climbing.karakorum?is_from_webapp=1&sender_device=pc" aria-label="Twitter"
+              target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/climbing_karakorum?igsh=OGcwYXM4czh1ZHRu" aria-label="Instagram"
+              target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/climbing-karakorum-ck-%F0%9F%87%B5%F0%9F%87%B0-184051361/"
+              aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@climbingkarakorum_CK" aria-label="LinkedIn" target="_blank"><i
+                class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="exploreexpadition.html">Expeditions</a></li>
+            <li><a href="viewtreks.html">Trekking</a></li>
+            <li><a href="discovertours.html">Tours</a></li>
+            <!-- <li><a href="contactus.html">Contact</a></li> -->
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Expeditions</h3>
+          <ul>
+            <li><a href="bonditpeak.html">Bondit Peak</a></li>
+            <li><a href="K2peak.html">K2 Expeditions</a></li>
+            <li><a href="Broadpeak.html">Broad Peak</a></li>
+            <li><a href="Gasherbrum1peak.html">Gasherbrum I</a></li>
+            <li><a href="Nangaparbatpeak.html">Nanga Parbat</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <address>
+            <p><i class="fas fa-map-marker-alt"></i> Saythang near Public School & College Skardu, Gilgit
+              Baltistan,
+              Pakistan</p>
+            <p><i class="fas fa-phone-alt"></i> +92 3555040170</p>
+            <p><i class="fas fa-envelope"></i> Info@climbingkarakorum.com</p>
+          </address>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Climbing Karakorum. All rights reserved.</p>
+        <div class="footer-links">
+          <!-- <a href="privacypolicy.html">Privacy Policy</a> -->
+          <a href="terms-conditions.html">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialize both forms
+      initForm('contactForm', 'formMessage');
+      initForm('bookingForm', 'bookingMessage');
+
+      function initForm(formId, messageId) {
+        const form = document.getElementById(formId);
+        if (!form) return; // Skip if form doesn't exist on page
+
+        const messageElement = document.getElementById(messageId) || createMessageElement(form, messageId);
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          // Validate form
+          if (!validateForm(form)) {
+            showMessage(messageElement, 'Please fill in all required fields', 'error');
+            return;
+          }
+
+          // Additional validation for booking form destination
+          if (formId === 'bookingForm') {
+            const destinationInput = form.querySelector('#destination');
+            if (!validateDestination(destinationInput.value)) {
+              showMessage(messageElement, 'Please enter a valid destination', 'error');
+              destinationInput.style.borderColor = '#e74c3c';
+              return;
+            }
+          }
+
+          // Show loading state
+          setLoadingState(submitBtn, true);
+
+          // Submit form data
+          submitForm(form)
+            .then(() => {
+              showMessage(messageElement, getSuccessMessage(formId), 'success');
+              form.reset();
+            })
+            .catch(error => {
+              console.error(`${formId} error:`, error);
+              showMessage(messageElement, 'There was a problem. Please try again later.', 'error');
+            })
+            .finally(() => {
+              setLoadingState(submitBtn, false);
+            });
+        });
+
+        // Add input event to clear error styling
+        if (formId === 'bookingForm') {
+          const destinationInput = form.querySelector('#destination');
+          if (destinationInput) {
+            destinationInput.addEventListener('input', function () {
+              this.style.borderColor = '#ddd';
+            });
+          }
+        }
+      }
+
+      // Destination validation
+      function validateDestination(destination) {
+        return destination.trim().length > 2; // At least 3 characters
+      }
+
+      // Form validation
+      function validateForm(form) {
+        let isValid = true;
+        const requiredFields = form.querySelectorAll('[required]');
+
+        requiredFields.forEach(field => {
+          if (!field.value.trim()) {
+            isValid = false;
+            field.style.borderColor = '#e74c3c';
+          } else {
+            field.style.borderColor = '#ddd';
+          }
+        });
+
+        return isValid;
+      }
+
+      // Form submission
+      function submitForm(form) {
+        return fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          return response;
+        });
+      }
+
+      // Loading state toggle
+      function setLoadingState(button, isLoading) {
+        const originalText = button.getAttribute('data-original-text') || button.textContent.trim();
+
+        if (isLoading) {
+          button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + originalText;
+          button.disabled = true;
+        } else {
+          button.textContent = originalText;
+          button.disabled = false;
+        }
+      }
+
+      // Message display
+      function showMessage(element, message, type) {
+        if (!element) return;
+
+        element.textContent = message;
+        element.className = `form-message ${type}`;
+        element.style.display = 'block';
+
+        setTimeout(() => {
+          element.style.display = 'none';
+        }, 5000);
+      }
+
+      // Create message element if it doesn't exist
+      function createMessageElement(form, id) {
+        const messageElement = document.createElement('div');
+        messageElement.id = id;
+        messageElement.className = 'form-message';
+        messageElement.style.display = 'none';
+        form.appendChild(messageElement);
+        return messageElement;
+      }
+
+      // Custom success messages
+      function getSuccessMessage(formId) {
+        const messages = {
+          'contactForm': 'Thank you for your message! We will get back to you soon.',
+          'bookingForm': 'Thank you for your booking request! We will contact you shortly to confirm your adventure.'
+        };
+        return messages[formId] || 'Form submitted successfully!';
+      }
+
+      // Store original button text on page load
+      document.querySelectorAll('form button[type="submit"]').forEach(btn => {
+        btn.setAttribute('data-original-text', btn.textContent.trim());
+      });
+    });
+  </script>
+
+  <!-- Your existing scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+</body>
+
+</html>

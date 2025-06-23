@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Climbing Karakoram - Premier mountaineering and trekking expeditions in Pakistan's majestic mountain ranges">
+    <title>Climbing Karakorum </title>
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Expedition Page Specific Styles */
+        .expedition-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/expadition/broad peak/broad peak1.jpg') center/cover no-repeat;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .expedition-hero-content h1 {
+            font-size: 3.0rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .expedition-hero-content p {
+            font-size: 1.0rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .expedition-categories {
+            padding: 5rem 0;
+            background-color: #f9f9f9;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        /* .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #e74c3c;
+            margin: 1rem auto 2rem;
+        } */
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover .category-image img {
+            transform: scale(1.05);
+        }
+
+        .category-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .category-content p {
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .btn-small {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: #e74c3c;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+            border: 2px solid #e74c3c;
+        }
+
+        .btn-small:hover {
+            background: transparent;
+            color: #e74c3c;
+        }
+
+        .btn-small i {
+            margin-left: 0.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-small:hover i {
+            transform: translateX(3px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .category-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .expedition-hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .expedition-hero {
+                height: 60vh;
+            }
+
+            .expedition-categories {
+                padding: 3rem 0;
+            }
+
+            .expedition-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .expedition-hero-content p {
+                font-size: 15px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .btn-primary {
+                padding: 8px 20px;
+                font-size: 15px;
+            }
+
+            .category-image {
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .expedition-hero {
+                height: 50vh;
+            }
+
+            .expedition-hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .expedition-hero-content p {
+                font-size: 14px;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .section-subtitle {
+                font-size: 14px;
+                padding: 1px 1rem;
+            }
+
+            .btn-primary {
+                padding: 8px 20px;
+                font-size: 15px;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .category-content h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .category-card {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .category-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .category-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .category-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .category-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Contact Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><i class="fab fa-whatsapp"></i> +92 3345010552</span>
+                <span><i class="fas fa-envelope"></i> info@climbingkarakorum.com</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1EENM7MeMb/" aria-label="Facebook" target="_blank"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com/@climbing.karakorum?is_from_webapp=1&sender_device=pc"
+                    aria-label="Twitter" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/climbing_karakorum?igsh=OGcwYXM4czh1ZHRu" aria-label="Instagram"
+                    target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/climbing-karakorum-ck-%F0%9F%87%B5%F0%9F%87%B0-184051361/"
+                    aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/@climbingkarakorum_CK" aria-label="LinkedIn" target="_blank"><i
+                        class="fab fa-youtube"></i></a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo/Climbing_Karakorum_logo-02-removebg-preview.png" alt="Climbing Karakorum Logo"
+                    width="120" height="120">
+                <span class="logo-text">Climbing Karakorum</span>
+            </a>
+
+            <div class="nav-container">
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="toggle-bar"></span>
+                    <span class="toggle-bar"></span>
+                    <span class="toggle-bar"></span>
+                </button>
+
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link active">Home</a></li>
+
+                        <li class="dropdown">
+                            <button class="dropdown-btn" aria-expanded="false" aria-haspopup="true">
+                                Expeditions <i class="fas fa-chevron-down dropdown-icon"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="submenu">
+                                    <button class="submenu-btn">6000M Peaks <i
+                                            class="fas fa-chevron-right"></i></button>
+                                    <ul class="submenu-list">
+                                        <li><a href="bonditpeak.html">Bondit Peak Expeditions</a></li>
+                                        <li><a href="Drifikapeak.html">Drifika Peak Expeditions</a></li>
+                                        <li><a href="gondogoro-peak.html">Gandogoro Peak Expeditions</a></li>
+                                        <li><a href="lailapeak.html">Laila Peak Expeditions</a></li>
+                                        <li><a href="pajupeak.html">Paju Peak Expeditions</a></li>
+                                    </ul>
+                                </li>
+                                <li class="submenu">
+                                    <button class="submenu-btn">7000M Peaks <i
+                                            class="fas fa-chevron-right"></i></button>
+                                    <ul class="submenu-list">
+                                        <li><a href="rakaposhipeak.html">Rakaposhi Expeditions</a></li>
+                                        <li><a href="masherbrumpeak.html">Masherbrum Expeditions</a></li>
+                                        <li><a href="spantikpeak.html">Spantik Expeditions</a></li>
+                                        <li><a href="diranpeak.html">Diran Peak Expeditions</a></li>
+                                        <li><a href="gasherbrum4peak.html">Gasherbrum 4 Expeditions</a></li>
+                                        <li><a href="gasherbrum6peak.html">Gasherbrum 6 Expeditions</a></li>
+                                        <li><a href="passupeak.html">Passu Sar Expeditions</a></li>
+                                        <li><a href="ultrapeak.html">Ultra Sar Expeditions</a></li>
+                                    </ul>
+                                </li>
+                                <li class="submenu">
+                                    <button class="submenu-btn">8000M Peaks <i
+                                            class="fas fa-chevron-right"></i></button>
+                                    <ul class="submenu-list">
+                                        <li><a href="K2peak.html">K2 Expeditions</a></li>
+                                        <li><a href="Broadpeak.html">Broad Peak Expeditions</a></li>
+                                        <li><a href="Gasherbrum1peak.html">Gasherbrum I Expeditions</a></li>
+                                        <li><a href="Gasherbrum2peak.html">Gasherbrum 2 Expeditions</a></li>
+                                        <li><a href="Nangaparbatpeak.html">Nanga Parbat Expeditions</a></li>
+                                    </ul>
+                                </li>
+                                <li class="submenu">
+                                    <button class="submenu-btn">Rock Climbing <i
+                                            class="fas fa-chevron-right"></i></button>
+                                    <ul class="submenu-list">
+                                        <li><a href="Trangotowerpeak.html">Trango Tower Expeditions</a></li>
+                                        <li><a href="Nangmavalleypeak.html">Nangma Valley Expeditions</a></li>
+                                        <li><a href="Latokogrepeak.html">Latok Ogre Expeditions</a></li>
+                                        <li><a href="Shiptonspairpeak.html">Shipton Spair Expeditions</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <button class="dropdown-btn" aria-expanded="false" aria-haspopup="true">
+                                Trekking <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="submenu">
+                                    <button class="submenu-btn">Karakoram Range <i
+                                            class="fas fa-chevron-right"></i></button>
+                                    <ul class="submenu-list">
+                                        <li><a href="k2bctrek.html">K2 B.C & Gandogoro La Trek</a></li>
+                                        <li><a href="k2gandogorolatrek.html">K2 Gandogoro La Trek</a></li>
+                                        <li><a href="biafolaketrek.html">Biafo & Snow Lake Trek</a></li>
+                                        <li><a href="Charakusatrek.html">Charakusa valley Trek</a></li>
+                                        <li><a href="Iqbaltoptrek.html">Iqbal Top Trek</a></li>
+                                        <li><a href="Nangmatrek.html">Nangma Valley Trek</a></li>
+                                        <li><a href="Masherbrumbasetrek.html">Masherbrum Base Camp Trek</a></li>
+                                        <li><a href="Fivebasetrek.html">Five Base Camp Trek</a></li>
+                                        <li><a href="Pastorebasetrek.html">Pastore Base Camp Trek</a></li>
+                                    </ul>
+                                </li>
+                                <li class="submenu">
+                                    <button class="submenu-btn">Himalayan Range <i
+                                            class="fas fa-chevron-right"></i></button>
+                                    <ul class="submenu-list">
+                                        <li><a href="Nangaparbattrek.html">Nanga Parbat Diamir Face Trek</a></li>
+                                        <li><a href="aroundnangatrek.html">Around Nanga Parbat Trek</a></li>
+                                        <li><a href="Nangaraikotfacetrek.html">Nanga Parbat Raikot Face Trek</a></li>
+                                        <li><a href="nangarupalfacetrek.html">Nanga Parbat Rupal Face Trek</a></li>
+                                    </ul>
+                                </li>
+                                <li class="submenu">
+                                    <button class="submenu-btn">Hindush Range <i
+                                            class="fas fa-chevron-right"></i></button>
+                                    <ul class="submenu-list">
+                                        <li><a href="nalterishkomantrek.html">Nalter Ishkoman Trek</a></li>
+                                        <li><a href="trichmirbasetrek.html">Trich Mir Base Camp Trek</a></li>
+                                        <li><a href="chilinajipasstrek.html">Chilinji Pass Trek</a></li>
+                                        <li><a href="Darkotpasstrek.html">Darkot Pass Trek</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <button class="dropdown-btn" aria-expanded="false" aria-haspopup="true">
+                                Tours <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="submenu">
+                                    <button class="submenu-btn">Autumn Session <i
+                                            class="fas fa-chevron-right"></i></button>
+                                    <ul class="submenu-list">
+                                        <li><a href="gbautumntour.html">Gilgit Baltistan Autumn Tour</a></li>
+                                        <li><a href="gbculturetour.html">Gilgit-Baltistan Culture Tour</a></li>
+                                        <li><a href="hunzaautumntour.html">Hunza Autumn Tour</a></li>
+                                        <li><a href="phandartautumntour.html">Phandar Autumn Tour</a></li>
+                                    </ul>
+                                </li>
+                                <li class="submenu">
+                                    <button class="submenu-btn">Spring Session <i
+                                            class="fas fa-chevron-right"></i></button>
+                                    <ul class="submenu-list">
+                                        <li><a href="springhunzavalleytour.html">Spring Session Hunza Valley Blossom</a>
+                                        </li>
+                                        <li><a href="tourskarduvalley.html">Tour Skardu Valley Blossom Tour</a></li>
+                                        <li><a href="khapluvalleytour.html">Khaplu Valley Blossom Tour</a></li>
+                                        <li><a href="astorevalleytour.html">Astore Valley Blossom Tour
+                                            </a></li>
+                                    </ul>
+                                </li>
+                                <li class="submenu">
+                                    <button class="submenu-btn">Summer Season <i
+                                            class="fas fa-chevron-right"></i></button>
+                                    <ul class="submenu-list">
+                                        <li><a href="deoseiplateautour.html">Deosei Plateau Tour</a></li>
+                                        <li><a href="fairymeadowtour.html">Fairy Meadow Tour</a></li>
+                                        <li><a href="khunjerabpasstour.html">Khunjerab Pass Tour</a></li>
+                                        <li><a href="shandurpolotour.html">Shandur Polo Tour</a></li>
+                                    </ul>
+                                </li>
+                                <li class="submenu">
+                                    <button class="submenu-btn">Winter Season <i
+                                            class="fas fa-chevron-right"></i></button>
+                                    <ul class="submenu-list">
+                                        <li><a href="astoremarkhorhuntingtour.html">Astore Markhor Hunting</a></li>
+                                        <li><a href="himalayanibexhuntingtour.html">Himalayan Ibex Hunting</a></li>
+                                        <li><a href="punjaburailhunting.html">Punjab Urial Hunting</a></li>
+                                        <li><a href="sindthibexhuntingtour.html">Sindth Ibex Hunting</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Inside your existing HTML, replace the Travel Info dropdown section with this: -->
+                        <li class="dropdown">
+                            <button class="dropdown-btn" aria-expanded="false" aria-haspopup="true">
+                                Travel Info <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="mountaineering-rules.html" class="nav-link">Mountaineering Rules</a></li>
+                                <li><a href="pakistan-mountains-list.html" class="nav-link">Mountains List in
+                                        Pakistan</a></li>
+                                <li><a href="peak-royalty-fees.html" class="nav-link">Peak Royalty in Pakistan</a></li>
+                                <li><a href="terms-conditions.html" class="nav-link">Terms and Conditions</a></li>
+                                <li><a href="aboutus.html" class="nav-link">About Our Company</a></li>
+                            </ul>
+                        </li>
+                        <!-- <li><a href="aboutus.html" class="nav-link">About Us</a></li> -->
+                        <li><a href="contactus.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <a href="booking.html" class="btn btn-primary book-now-btn">Book Now <i class="fas fa-arrow-right"></i></a>
+
+        </div>
+    </header>
+
+    <section class="expedition-hero">
+        <div class="expedition-hero-content">
+            <h1>Mountaineering Expeditions</h1>
+            <p>Challenge yourself on Pakistan's most spectacular peaks with our expert-guided expeditions. From 6000m
+                beginner peaks to 8000m giants, we have the perfect adventure for you.</p>
+            <!-- <a href="exploreexpadition.html" class="btn btn-primary">Explore Expeditions <i
+                    class="fas fa-arrow-down"></i></a> -->
+        </div>
+    </section>
+
+    <!-- Expedition Categories -->
+    <section class="expedition-categories" id="expeditions">
+        <div class="container">
+            <h2  class="section-title">Choose Your Challenge</h2>
+            <p class="section-subtitle"></p>
+
+            <div class="category-grid">
+                <!-- 6000m Peaks -->
+                <article class="category-card">
+                    <div class="category-image">
+                        <img src="images/expadition/bondit peak/bondit peak 2.jpg" alt="6000m Peaks" loading="lazy">
+                    </div>
+                    <div class="category-content">
+                        <h3>6000m Peaks</h3>
+                        <p>Perfect for aspiring mountaineers, these peaks offer challenging climbs with less technical
+                            difficulty. Ideal for your first high-altitude experience.</p>
+                        <a href="6000peak.html" class="btn btn-small">Explore Peaks <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- 7000m Peaks -->
+                <article class="category-card">
+                    <div class="category-image">
+                        <img src="images/expadition/rakaposhi peak/rakaphoshi 3.jpeg" alt="7000m Peaks" loading="lazy">
+                    </div>
+                    <div class="category-content">
+                        <h3>7000m Peaks</h3>
+                        <p>For experienced climbers ready to push their limits. These expeditions require solid
+                            mountaineering skills and high-altitude experience.</p>
+                        <a href="7000peak.html" class="btn btn-small">Explore Peaks <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- 8000m Peaks -->
+                <article class="category-card">
+                    <div class="category-image">
+                        <img src="images/expadition/k2 peak/k2 expadition 3.jpg" alt="8000m Peaks" loading="lazy">
+                    </div>
+                    <div class="category-content">
+                        <h3>8000m Peaks</h3>
+                        <p>The ultimate mountaineering challenge. Join our expert teams to summit the world's highest
+                            peaks in the Karakoram and Himalaya ranges.</p>
+                        <a href="8000peak.html" class="btn btn-small">Explore Peaks <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Rock Climbing -->
+                <article class="category-card">
+                    <div class="category-image">
+                        <img src="images/expadition/Nangma Valley Expedition/Nangma Valley 2.jpeg" alt="Rock Climbing"
+                            loading="lazy">
+                    </div>
+                    <div class="category-content">
+                        <h3>Rock Climbing</h3>
+                        <p>Technical rock climbing expeditions on Pakistan's legendary granite walls. From Trango Tower
+                            to the Latok Group, challenge your climbing skills.</p>
+                        <a href="rockclimbing.html" class="btn btn-small">Explore Routes <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/logo/Climbing_Karakorum_logo-02-removebg-preview.png" alt="Climbing Karakoram"
+                        class="footer-logo">
+                    <p>Providing unforgettable mountain experiences since 2005. Our expert guides will take you safely
+                        to the most
+                        spectacular locations in the Karakoram, Himalaya, and Hindu Kush ranges.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/share/1EENM7MeMb/" aria-label="Facebook" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@climbing.karakorum?is_from_webapp=1&sender_device=pc"
+                            aria-label="Twitter" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/climbing_karakorum?igsh=OGcwYXM4czh1ZHRu"
+                            aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/climbing-karakorum-ck-%F0%9F%87%B5%F0%9F%87%B0-184051361/"
+                            aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@climbingkarakorum_CK" aria-label="LinkedIn" target="_blank"><i
+                                class="fab fa-youtube"></i></a>
+                        <!-- <a href="https://www.youtube.com/@climbingkarakorum_CK" aria-label="LinkedIn" target="_blank"><i
+                                class="fab fa-youtube"></i></a> -->
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="expadition.html">Expeditions</a></li>
+                        <li><a href="viewtreks.html">Trekking</a></li>
+                        <li><a href="discovertours.html">Tours</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Expeditions</h3>
+                    <ul>
+                        <li><a href="K2peak.html">K2 Expeditions</a></li>
+                        <li><a href="Broadpeak.html">Broad Peak</a></li>
+                        <li><a href="Gasherbrum1peak.html">Gasherbrum I</a></li>
+                        <li><a href="Nangaparbatpeak.html">Nanga Parbat</a></li>
+                        <li><a href="spantikpeak.html">Spantik</a></li>
+                        <li><a href="rakaposhipeak.html">Rakaposhi</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <address>
+                        <p><i class="fas fa-map-marker-alt"></i> Saythang near Public School & College Skardu, Gilgit
+                            Baltistan,
+                            Pakistan</p>
+                        <p><i class="fas fa-phone-alt"></i> +92 3555040170</p>
+                        <p><i class="fas fa-envelope"></i> Info@climbingkarakorum.com</p>
+                    </address>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Climbing Karakorum. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacypolicy.html">Privacy Policy</a>
+                    <a href="termanndcondition.html">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script>
+        // Initialize lightGallery
+        lightGallery(document.querySelector('.gallery-container'), {
+            selector: '.gallery-item',
+            download: false,
+            counter: false
+        });
+    </script>
+</body>
+
+</html>
